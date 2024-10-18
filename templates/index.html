@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Welcome to the Machine Learning App</h1>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('knn') }}">KNN Classifier</a></li>
+            <li><a href="{{ url_for('linear_regression') }}">Linear Regression</a></li>
+        </ul>
+    </nav>
+</body>
+</html>

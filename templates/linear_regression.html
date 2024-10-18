@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Linear Regression</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Linear Regression</h1>
+    <form action="{{ url_for('linear_regression') }}" method="post" enctype="multipart/form-data">
+        <label for="dataset">Upload Dataset (CSV):</label>
+        <input type="file" id="dataset" name="dataset">
+        <button type="submit">Train Model</button>
+    </form>
+    {% if r2_score %}
+    <h2>R² Score: {{ r2_score }}</h2>
+    <h2>Mean Squared Error: {{ mse }}</h2>
+    <h3>Accuracy Matrix</h3>
+    {{ accuracy_matrix|safe }}
+    {% endif %}
+    {% if prediction %}
+    <h2>Prediction: {{ prediction }}</h2>
+    {% endif %}
+</body>
+</html>

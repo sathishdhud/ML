@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KNN Classifier</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>KNN Classifier</h1>
+        </header>
+        <main class="dashboard">
+            <section class="result-section">
+                {% if accuracy %}
+                <h2>Model Accuracy: {{ accuracy }}</h2>
+                <h3>Accuracy Matrix</h3>
+                <div class="matrix">{{ accuracy_matrix|safe }}</div>
+                {% else %}
+                <h2>No Accuracy Data Available</h2>
+                {% endif %}
+            </section>
+
+            <section class="upload-section">
+                <h2>Upload Dataset</h2>
+                <form action="{{ url_for('knn') }}" method="post" enctype="multipart/form-data" class="upload-form">
+                    <label for="dataset">Upload Dataset (CSV):</label>
+                    <input type="file" id="dataset" name="dataset" accept=".csv" required>
+                    <button type="submit">Train Model</button>
+                </form>
+            </section>
+        </main>
+        <footer>
+            <p>&copy; 2024 Machine Learning Dashboard</p>
+        </footer>
+    </div>
+</body>
+</html>
